@@ -1,6 +1,7 @@
 package com.me.userservice.service;
 
 import com.me.userservice.converter.UserConverter;
+import com.me.userservice.dto.AuthUserDto;
 import com.me.userservice.dto.CreateUserDto;
 import com.me.userservice.dto.UserDto;
 import com.me.userservice.mapper.UserMapper;
@@ -17,9 +18,14 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public UserDto getUserById(String id) {
-        User user = userMapper.getUserById(id);
+    public UserDto getUserByUsername(String username) {
+        User user = userMapper.getUserByUsername(username);
         return UserConverter.toUserDto(user);
+    }
+
+    public AuthUserDto getAuthUserByUsername(String username) {
+        User user = userMapper.getUserByUsername(username);
+        return UserConverter.toAuthUserDto(user);
     }
 
     public void createUser(CreateUserDto createUserDto) {

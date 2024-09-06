@@ -4,7 +4,6 @@ import com.me.userservice.dto.CreateUserDto;
 import com.me.userservice.dto.UserDto;
 import com.me.userservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +16,7 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<UserDto> getUserById(@PathVariable("id") String id) {
-        return new ResponseEntity<>(userService.getUserById(id), HttpStatus.OK);
+        return ResponseEntity.ok(userService.getUserByUsername(id));
     }
 
     @PostMapping("/create")

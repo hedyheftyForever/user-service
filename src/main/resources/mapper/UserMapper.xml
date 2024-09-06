@@ -17,7 +17,7 @@
         VALUES (#{id}, #{username}, #{password}, #{createTime}, #{email}, #{phone})
     </insert>
 
-    <select id="getUserById" resultMap="UserResultMap">
-        SELECT * FROM users WHERE id = #{id}
+    <select id="getUserByUsername" resultMap="UserResultMap">
+        SELECT * FROM users WHERE username = #{username}
     </select>
 </mapper>
