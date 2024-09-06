@@ -26,7 +26,7 @@ public class AuthController {
     public ResponseEntity<LoginUserDto> login(@RequestBody AuthUserDto authUserDto) {
         if (!authenticationService.authenticate(authUserDto)) {
             log.error("auth failed");
-            return new ResponseEntity<>(new LoginUserDto(), HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
 
         LoginUserDto loginUserDto = new LoginUserDto();

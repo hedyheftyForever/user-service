@@ -18,6 +18,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         if (request.getRequestURI().contains("login")) {
             log.info("login, pass filter");
             filterChain.doFilter(request, response);
+            return;
         }
 
         String authHeader = request.getHeader("Authorization");

@@ -1,7 +1,6 @@
 package com.me.userservice.service;
 
 import com.me.userservice.dto.AuthUserDto;
-import com.me.userservice.utils.JwtUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,7 +25,4 @@ public class AuthenticationService {
         return passwordEncoder.matches(authUserDto.getPassword(), localUser.getPassword());
     }
 
-    public String generateToken(String username) {
-        return JwtUtils.generateToken(username);
-    }
 }

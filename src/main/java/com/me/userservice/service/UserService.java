@@ -29,8 +29,13 @@ public class UserService {
     }
 
     public void createUser(CreateUserDto createUserDto) {
-        User user = UserConverter.createUser(createUserDto);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userMapper.createUser(user);
+        User user = userMapper.getUserByUsername(createUserDto.getUsername());
+        if (user != null) {
+            throw new RuntimeException("user already exist: " + user.getUsername());
+        }
+
+        User createUser = UserConverter.createUser(createUserDto);
+        createUser.setPassword(passwordEncoder.encode(createUser.getPassword()));
+        userMapper.createUser(createUser);
     }
 }
