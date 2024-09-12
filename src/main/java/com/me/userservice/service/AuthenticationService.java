@@ -24,5 +24,4 @@ public class AuthenticationService {
 
         return passwordEncoder.matches(authUserDto.getPassword(), localUser.getPassword());
     }
-
 }
